@@ -52,12 +52,12 @@ class ProductManager {
 const productManager = new ProductManager();
 
 const products = productManager.getProducts();
-console.log(products); // Devuelve un arreglo vacío []
+console.log(products);
 
 productManager.addProduct("producto prueba 2", "Este es un producto prueba 3", 400, "Sin imagen", "abc123", 27);
 
 
-const product = productManager.getProductById(2);
-console.log(product); // Devuelve el producto agregado con el ID 1
+const product = productManager.getProductById(1);
+console.log(product);
 
 
