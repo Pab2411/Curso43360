@@ -49,10 +49,12 @@ class ProductManager {
                 const data = await fs.promises.readFile(this.path, "utf-8");
                 if (data) {
                     this.products = JSON.parse(data);
-                    console.log(this.products)
+                    /*console.log(this.products)*/
 
                     if (!this.products || this.products.length === 0) {
                         console.log('Error: No hay productos');
+                    } else {
+                        return this.products
                     }
 
                 } else {
@@ -75,7 +77,7 @@ class ProductManager {
 
                     const product = await this.products.find((p) => p.id === id);
                     if (product) {
-                        console.log(product)
+
                         return product;
                     } else {
                         console.log(`Error: Producto no encontrado con el id ${id}`);
@@ -160,33 +162,47 @@ class ProductManager {
 
 
 const productManager = new ProductManager(archivo);
+/*
+const products = async () => {
 
-/*const products = async () => {
-
-    let resultado = await productManager.getProducts();
-    console.log(resultado);
+    let resulProd = await productManager.getProducts();
+    console.log(resulProd);
 }
-products();*/
-
-const product = productManager.getProducts();
-
-/*
-const cargoProducto = productManager.addProduct({
-    title: "producto prueba 11",
-    description: "Este es un producto prueba 3",
-    price: 1000,
-    thumbnail: "Sin imagen",
-    code: "abcd",
-    stock: 30
-})
-
-
-
-
-
-const buscoProducConId = productManager.getProductById(4);
-/*
-const modificoProdconId = productManager.updateProduct(4, { title: "se va ", price: 800 })
-
-const eliminoConId = productManager.deleteProduct(4)
+products();
 */
+
+/*const cargoProducto = async () => {
+
+    await productManager.addProduct({
+        title: "producto prueba 09",
+        description: "Este es un producto prueba 3",
+        price: 1000,
+        thumbnail: "Sin imagen",
+        code: "ab111",
+        stock: 30
+    })
+}
+cargoProducto()
+*/
+
+/*
+const buscoProducConId = async () => {
+
+    let resultProdConId = await productManager.getProductById(3);
+    console.log(resultProdConId)
+}
+buscoProducConId()
+*/
+
+/*
+const modificoProdconId = async () => {
+    await productManager.updateProduct(2, { title: "modificado ", price: 900 })
+}
+modificoProdconId()
+*/
+
+const eliminoConId = async () => {
+    await productManager.deleteProduct(2)
+}
+eliminoConId()
+
