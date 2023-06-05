@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "product": "banana"
+    },
+    {
+        "id": 2,
+        "product": "naranja"
+    },
+    {
+        "id": 3,
+        "product": "mandarina"
+    },
+    {
+        "id": 4,
+        "product": "limon"
+    },
+    {
+        "id": 5,
+        "product": "pomelo"
+    },
+    {
+        "id": 6,
+        "product": "durazno"
+    },
+    {
+        "id": 7,
+        "product": "coco"
+    },
+    {
+        "id": 8,
+        "product": "kiwi"
+    },
+    {
+        "id": 9,
+        "product": "mango"
+    },
+    {
+        "id": 10,
+        "product": "melocoton"
+    }
+]
