@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }))
 
-const productManager = new ProductManager('../archivoHL/Usr.json');
+const productManager = new ProductManager();
 
 app.get('/products', async (req, res) => {
     try {

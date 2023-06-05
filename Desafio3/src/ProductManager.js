@@ -1,15 +1,15 @@
 import fs from 'fs'
 
-const productos = '../archivoHL/Usr.json'
+//const productos = '../archivoHL/Usr.json'
 
 class ProductManager {
-    constructor(path) {
-        this.path = path;
+    constructor() {
+        this.filePath = '../archivoHL/Usr.json';
     }
 
     async getAllProcucts(limit) {
         try {
-            const data = await fs.promises.readFile(this.path, 'utf-8');
+            const data = await fs.promises.readFile(this.filePath, 'utf-8');
             const products = JSON.parse(data);
 
             if (limit) {
@@ -25,7 +25,7 @@ class ProductManager {
     async getProductById(productId) {
 
         try {
-            const data = await fs.promises.readFile(this.path, 'utf-8');
+            const data = await fs.promises.readFile(this.filePath, 'utf-8');
             const products = JSON.parse(data);
             const parsedProductoId = parseInt(productId)
             const product = products.find(p => p.id === parsedProductoId);
