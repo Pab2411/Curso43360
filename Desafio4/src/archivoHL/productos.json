@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "bici",
+    "description": "Motor 6 tiempos",
+    "code": "jkl125",
+    "price": "5300",
+    "stock": "3",
+    "category": "motor",
+    "thumbnails": [
+      null
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Camioneta",
+    "description": "Nafta 4 pistones",
+    "code": "jkl125",
+    "price": "2500",
+    "stock": "3",
+    "category": "motor",
+    "thumbnails": [
+      null
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Moto",
+    "description": "Nafta 4 pistones",
+    "code": "jkl125",
+    "price": "2500",
+    "stock": "3",
+    "category": "motor",
+    "thumbnails": [
+      null
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Camiones",
+    "description": "Nafta 4 pistones",
+    "code": "jkl125",
+    "price": "2500",
+    "stock": "3",
+    "category": "motor",
+    "thumbnails": [
+      null
+    ]
+  },
+  {
+    "id": 5,
+    "title": "calefactores",
+    "description": "Nafta 4 pistones",
+    "code": "jkl125",
+    "price": "2500",
+    "stock": "3",
+    "category": "motor",
+    "thumbnails": [
+      null
+    ]
+  },
+  {
+    "id": 6,
+    "title": "radiador",
+    "description": "comun",
+    "code": "jkl152",
+    "price": "3000",
+    "stock": "2",
+    "category": "livianos",
+    "thumbnails": [
+      ""
+    ]
+  }
+]
