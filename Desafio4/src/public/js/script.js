@@ -1,6 +1,5 @@
 const socket = io();
 
-
 document.addEventListener('DOMContentLoaded', () => {
 
 
@@ -36,9 +35,61 @@ function addProduct(event) {
 
 const productList = document.getElementById('productList')
 
+// renderizado del producto agregado
+/*
 socket.on('productAdded', newProduct => {
     console.log('Nuevo producto agregado:', newProduct);
     const listItem = document.createElement('li');
     listItem.textContent = newProduct.title;
     productList.appendChild(listItem);
-})
+});
+*/
+//prueba
+
+socket.on('productAdded', newProduct => {
+    console.log('Nuevo producto agregado:', newProduct);
+    const listItem = document.createElement('li');
+    listItem.setAttribute('data-id', newProduct.id); // Agrega el atributo data-id al elemento li
+    listItem.innerHTML = `
+        <button class="deleteButton" id="deleteButton-${newProduct.id}">Eliminar</button>
+        ${newProduct.title}
+    `;
+    productList.appendChild(listItem);
+});
+
+
+
+/*
+socket.on('nuevoProducto',products =>{
+    console.log(products)
+    products.forEach((product)=>{
+        const listItem=document.createElement('li');
+        listItem.textContent=product.title;
+        productList.appendChild(listItem);
+    })
+});
+*/
+
+// borado de producto
+
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('deleteButton')) {
+        const productId = event.target.parentNode.getAttribute('data-id');
+        deleteProduct(productId);
+    }
+});
+
+function deleteProduct(productId) {
+    // Envía id al servidor
+    socket.emit('deleteProduct', productId);
+}
+
+// renderizado del producto ya borrado
+
+socket.on('productDeleted', productId => {
+    console.log('Producto eliminado:', productId);
+    const listItem = document.querySelector(`li[data-id="${productId}"]`);
+    if (listItem) {
+        listItem.remove();
+    }
+});

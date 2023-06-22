@@ -1,5 +1,6 @@
 import express from 'express'
 import fs from 'fs'
+import {io} from 'socket.io-client'
 
 const router = express.Router();
 
@@ -45,10 +46,10 @@ router.get('/realTimeProducts', async (req, res) => {
 });
 
 // agrego un nuevo producto 
-/*
+
 router.post('/realTimeProducts', async (req, res) => {
     try {
-        const { title, description, code, price, stock, category, thumbnails } = newProduct;
+        const { title, description, code, price, stock, category, thumbnails } = req.body;
         if (!title || !description || !code || !price || !stock || !category) {
             return res.status(400).json({ error: 'Todos los campos son obligatorios' })
         }
@@ -72,13 +73,16 @@ router.post('/realTimeProducts', async (req, res) => {
 
         products.push(productToAdd);
         await fs.promises.writeFile(productsFilePath, JSON.stringify(products, null, 2));
+       
+        io.emit('nuevoProducto',products)
 
-        // res.render('realTimeProducts', { products });
+        console.log(products)
+        
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Error al agregar el producto' });
     }
 })
-*/
+
 export default router;
 
