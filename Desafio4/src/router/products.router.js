@@ -2,8 +2,10 @@ import express from 'express';
 import fs from 'fs';
 import { Router } from 'express';
 import { pathToFileURL } from 'url';
+import handlebars from 'express-handlebars'
 
 const router = Router();
+
 const productsFilePath = './archivoHL/productos.json'
 
 class Product {
@@ -142,6 +144,7 @@ router.delete('/:pid', async (req, res) => {
         res.status(500).json({ error: 'Error al eliminar el producto' });
     }
 })
+
 
 
 export default router;

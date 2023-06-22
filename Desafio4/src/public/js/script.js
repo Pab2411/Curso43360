@@ -1,17 +1,15 @@
 const socket = io();
 
+
 document.addEventListener('DOMContentLoaded', () => {
 
 
-    socket.on('productAdded', (newProduct) => {
-
-        console.log('Nuevo producto agregado:', newProduct);
-    })
 })
+
 function addProduct(event) {
     event.preventDefault();
 
-    const name = document.querySelector('input[name="title"]').value;
+    const title = document.querySelector('input[name="title"]').value;
     const description = document.querySelector('input[name="description"]').value;
     const code = document.querySelector('input[name="code"]').value;
     const price = document.querySelector('input[name="price"]').value;
@@ -35,3 +33,12 @@ function addProduct(event) {
     // Limpia los campos del formulario
     event.target.reset();
 }
+
+const productList = document.getElementById('productList')
+
+socket.on('productAdded', newProduct => {
+    console.log('Nuevo producto agregado:', newProduct);
+    const listItem = document.createElement('li');
+    listItem.textContent = newProduct.title;
+    productList.appendChild(listItem);
+})

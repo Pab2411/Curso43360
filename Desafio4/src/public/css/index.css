@@ -1,0 +1,11 @@
+p {
+    color: rgb(42, 165, 73);
+}
+
+h1 {
+    font-size: 24px;
+    background-color: blue;
+    color: blanchedalmond;
+    width: 350px;
+    height: 30px;
+}

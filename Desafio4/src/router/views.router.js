@@ -1,13 +1,15 @@
-import express from 'express';
-import fs from 'fs';
-import { Server } from 'socket.io'
-
+import express from 'express'
+import fs from 'fs'
 
 const router = express.Router();
 
 const productsFilePath = './archivoHL/productos.json';
 
-
+/*
+router.get('/home', async (req, res) => {
+    res.render('home',{})
+})
+*/
 
 // creo ruta home
 
@@ -43,8 +45,8 @@ router.get('/realTimeProducts', async (req, res) => {
 });
 
 // agrego un nuevo producto 
-
-router.post('/realTimeProducts', async (newProduct) => {
+/*
+router.post('/realTimeProducts', async (req, res) => {
     try {
         const { title, description, code, price, stock, category, thumbnails } = newProduct;
         if (!title || !description || !code || !price || !stock || !category) {
@@ -71,14 +73,12 @@ router.post('/realTimeProducts', async (newProduct) => {
         products.push(productToAdd);
         await fs.promises.writeFile(productsFilePath, JSON.stringify(products, null, 2));
 
-        res.render('realTimeProducts', { products });
+        // res.render('realTimeProducts', { products });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Error al agregar el producto' });
     }
 })
-
+*/
 export default router;
-
-
 
