@@ -262,5 +262,29 @@
     "thumbnails": [
       ""
     ]
+  },
+  {
+    "id": 23,
+    "title": "bea",
+    "description": "ffff",
+    "code": "lkkk",
+    "price": "5",
+    "stock": "6",
+    "category": "nnjj",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 24,
+    "title": "pablo",
+    "description": "fgggf",
+    "code": "njn",
+    "price": "5",
+    "stock": "5",
+    "category": "vvv",
+    "thumbnails": [
+      ""
+    ]
   }
 ]
