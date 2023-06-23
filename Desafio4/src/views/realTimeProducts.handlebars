@@ -2,7 +2,12 @@
     <h1>Productos en tiempo real</h1>
     <ul id="productList">
         {{#each products}}
-        <li>{{this.title}}</li>
+        <li data-id="{{this.id}}">
+            <button class="deleteButton" id="deleteButton-{{this.id}}">Eliminar</button>
+            {{this.title}}
+            
+        </li>
+        
         {{/each}}
     </ul>
 </div>
