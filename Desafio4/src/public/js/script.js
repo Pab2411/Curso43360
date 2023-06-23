@@ -58,7 +58,7 @@ socket.on('productAdded', newProduct => {
 });
 
 
-
+// render desde router
 /*
 socket.on('nuevoProducto',products =>{
     console.log(products)
@@ -70,14 +70,15 @@ socket.on('nuevoProducto',products =>{
 });
 */
 
-// borado de producto
+// borrado de producto
 
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     if (event.target.classList.contains('deleteButton')) {
         const productId = event.target.parentNode.getAttribute('data-id');
         deleteProduct(productId);
     }
 });
+
 
 function deleteProduct(productId) {
     // Envía id al servidor

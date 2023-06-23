@@ -1,48 +1,36 @@
 [
   {
     "id": 1,
-    "title": "bici",
-    "description": "Motor 6 tiempos",
-    "code": "jkl125",
-    "price": "5300",
+    "title": "pablo",
+    "description": "ruleman",
+    "code": "llll",
+    "price": "2",
     "stock": "3",
-    "category": "motor",
+    "category": "autos",
     "thumbnails": [
       ""
     ]
   },
   {
     "id": 2,
-    "title": "auto",
-    "description": "auto rojo",
-    "code": "jkl125",
-    "price": "5300",
+    "title": "pedro",
+    "description": "ruleman",
+    "code": "llll",
+    "price": "2",
     "stock": "3",
-    "category": "motor",
+    "category": "autos",
     "thumbnails": [
       ""
     ]
   },
   {
     "id": 3,
-    "title": "camioneta ",
-    "description": "deluxe",
-    "code": "jkl125",
-    "price": "1700",
-    "stock": "2",
-    "category": "motor",
-    "thumbnails": [
-      ""
-    ]
-  },
-  {
-    "id": 5,
-    "title": "edw",
-    "description": "dqwd",
-    "code": "jj",
-    "price": "5",
-    "stock": "5",
-    "category": "sd",
+    "title": "juan",
+    "description": "ruleman",
+    "code": "llll",
+    "price": "2",
+    "stock": "3",
+    "category": "autos",
     "thumbnails": [
       ""
     ]

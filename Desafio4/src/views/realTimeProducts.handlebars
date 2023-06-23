@@ -17,15 +17,14 @@
     <ul id="productList">
         {{#each products}}
         <li data-id="{{this.id}}">
-            <button class="deleteButton" id="deleteButton-{{this.id}}">Eliminar</button>
+            <button class="deleteButton" id="deleteButton{{this.id}}">Eliminar</button>
             {{this.title}}
-            
+
         </li>
-        
+
         {{/each}}
     </ul>
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="js/script.js"></script>
-

@@ -38,7 +38,7 @@ socketServer.on('connection', socket => {
                 return;
             }
 
-            
+
             const productsData = await fs.promises.readFile(productsFilePath, 'utf-8');
             const products = JSON.parse(productsData);
 
@@ -59,6 +59,7 @@ socketServer.on('connection', socket => {
             products.push(productToAdd);
             await fs.promises.writeFile(productsFilePath, JSON.stringify(products, null, 2));
             socketServer.emit('productAdded', newProduct);
+            console.log('newProduct')
             console.log(newProduct)
 
         } catch (error) {
@@ -70,20 +71,22 @@ socketServer.on('connection', socket => {
 
 
     socket.on('deleteProduct', async (productId) => {
-        console.log(productId)
+
         try {
             const productsData = await fs.promises.readFile(productsFilePath, 'utf-8');
             let products = JSON.parse(productsData);
 
             const pId = parseInt(productId);
             const index = products.findIndex((p) => p.id === pId);
-            if (index !== -1){
-                 products.splice(index, 1);
-                 await fs.promises.writeFile(productsFilePath, JSON.stringify(products, null, 2));
+            if (index !== -1) {
+                products.splice(index, 1);
+                await fs.promises.writeFile(productsFilePath, JSON.stringify(products, null, 2));
             }
-                // Envía el ID del producto eliminado a todos los clientes conectados
-                socketServer.emit('productDeleted', productId);
-            } catch (error) {
+            // Envía el ID del producto eliminado a todos los clientes conectados
+            socketServer.emit('productDeleted', productId);
+            console.log('producto eliminado')
+            console.log(productId)
+        } catch (error) {
             console.error(error);
             socket.emit('productError', { error: 'Error al eliminar el producto' });
         }
