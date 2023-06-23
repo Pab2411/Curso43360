@@ -21,10 +21,7 @@ app.set('views', __dirname + '/views')
 app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'))
 app.use('/', viewRouter(socketServer));
-/*app.use((req, res, next) => {
-    req.socket = socketServer; 
-    next();
-});*/
+
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
 

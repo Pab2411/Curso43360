@@ -6,11 +6,7 @@ const router = express.Router();
 
 const productsFilePath = './archivoHL/productos.json';
 
-/*
-router.get('/home', async (req, res) => {
-    res.render('home',{})
-})
-*/
+
 
 // creo ruta home
 
