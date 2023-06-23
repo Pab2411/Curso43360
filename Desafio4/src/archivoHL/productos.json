@@ -1,24 +1,24 @@
 [
   {
     "id": 1,
-    "title": "pablo",
-    "description": "ruleman",
-    "code": "llll",
-    "price": "2",
+    "title": "bici",
+    "description": "Motor 6 tiempos",
+    "code": "jkl125",
+    "price": "5300",
     "stock": "3",
-    "category": "autos",
+    "category": "motor",
     "thumbnails": [
       ""
     ]
   },
   {
     "id": 2,
-    "title": "pedro",
-    "description": "ruleman",
-    "code": "llll",
-    "price": "2",
+    "title": "auto",
+    "description": "auto rojo",
+    "code": "jkl125",
+    "price": "5300",
     "stock": "3",
-    "category": "autos",
+    "category": "motor",
     "thumbnails": [
       ""
     ]
@@ -36,13 +36,193 @@
     ]
   },
   {
+    "id": 4,
+    "title": "bicicleta",
+    "description": "paseo",
+    "code": "jkl125",
+    "price": "1700",
+    "stock": "2",
+    "category": "-",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
     "id": 5,
-    "title": "edw",
-    "description": "dqwd",
-    "code": "jj",
-    "price": "5",
-    "stock": "5",
-    "category": "sd",
+    "title": "bicicleta",
+    "description": "carrera",
+    "code": "jk222",
+    "price": "8000",
+    "stock": "2",
+    "category": "-",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 6,
+    "title": "camion",
+    "description": "volcador",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 7,
+    "title": "carrito",
+    "description": "descapotable",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 8,
+    "title": "lito",
+    "description": "descapotable",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 9,
+    "title": "pedro",
+    "description": "descapotable",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 10,
+    "title": "bernardo",
+    "description": "descapotable",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 11,
+    "title": "juan",
+    "description": "descapotable",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 12,
+    "title": "bea",
+    "description": "descapotable",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 13,
+    "title": "rea",
+    "description": "descapotable",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 14,
+    "title": "nose",
+    "description": "descapotable",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 15,
+    "title": "claroo",
+    "description": "descapotable",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 16,
+    "title": "noche",
+    "description": "descapotable",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 17,
+    "title": "dia",
+    "description": "descapotable",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 18,
+    "title": "julio",
+    "description": "descapotable",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 19,
+    "title": "mayo",
+    "description": "descapotable",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
     "thumbnails": [
       ""
     ]
