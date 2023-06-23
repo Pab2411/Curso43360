@@ -1,16 +1,11 @@
 import express from 'express'
 import fs from 'fs'
-import {io} from 'socket.io-client'
+
 
 const router = express.Router();
 
 const productsFilePath = './archivoHL/productos.json';
 
-/*
-router.get('/home', async (req, res) => {
-    res.render('home',{})
-})
-*/
 
 // creo ruta home
 
@@ -47,7 +42,8 @@ router.get('/realTimeProducts', async (req, res) => {
 
 // agrego un nuevo producto 
 
-router.post('/realTimeProducts', async (req, res) => {
+const viewRouter= (socket)=>{
+router.post('/realTimeProducts', async (req,res) => {
     try {
         const { title, description, code, price, stock, category, thumbnails } = req.body;
         if (!title || !description || !code || !price || !stock || !category) {
@@ -72,11 +68,12 @@ router.post('/realTimeProducts', async (req, res) => {
         };
 
         products.push(productToAdd);
-        await fs.promises.writeFile(productsFilePath, JSON.stringify(products, null, 2));
-       
-        io.emit('nuevoProducto',products)
+        await fs.promises.writeFile(productsFilePath, JSON.stringify(products, null, 2));    
+        
+        // Envía los productos actualizados a través de Socket.IO
+        socket.emit('productsUpdated', products);
+        res.json({ message: 'Producto cargado correctamente' });
 
-        console.log(products)
         
     } catch (error) {
         console.error(error);
@@ -84,5 +81,29 @@ router.post('/realTimeProducts', async (req, res) => {
     }
 })
 
-export default router;
+// elimino un producto por Id
 
+router.delete('/realTimeProducts/:pid', async (req, res) => {
+    try {
+        const productsData = await fs.promises.readFile(productsFilePath, 'utf-8');
+        let products = JSON.parse(productsData);
+        const productId = parseInt(req.params.pid);
+        const productIndex = products.findIndex((p) => p.id === productId);
+        if (productIndex !== -1) {
+            const deleteProduct = products.splice(productIndex, 1)[0];           
+            await fs.promises.writeFile(productsFilePath, JSON.stringify(products, null, 2));
+
+            socket.emit('productsUpdated', products);
+            res.send({ status: "succes", message: "Producto borrado", detalle: deleteProduct })
+        } else {
+            res.status(400).json({ error: 'Producto no encontrado' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al eliminar el producto' });
+    }
+})
+
+return router;
+}
+export default viewRouter;

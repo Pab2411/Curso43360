@@ -36,13 +36,85 @@
     ]
   },
   {
+    "id": 4,
+    "title": "bicicleta",
+    "description": "paseo",
+    "code": "jkl125",
+    "price": "1700",
+    "stock": "2",
+    "category": "-",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
     "id": 5,
-    "title": "edw",
-    "description": "dqwd",
-    "code": "jj",
-    "price": "5",
-    "stock": "5",
-    "category": "sd",
+    "title": "bicicleta",
+    "description": "carrera",
+    "code": "jk222",
+    "price": "8000",
+    "stock": "2",
+    "category": "-",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 6,
+    "title": "camion",
+    "description": "volcador",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 7,
+    "title": "carrito",
+    "description": "descapotable",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 8,
+    "title": "lito",
+    "description": "descapotable",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 9,
+    "title": "pedro",
+    "description": "descapotable",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
+    "thumbnails": [
+      ""
+    ]
+  },
+  {
+    "id": 10,
+    "title": "bernardo",
+    "description": "descapotable",
+    "code": "jk222",
+    "price": "1600",
+    "stock": "2",
+    "category": "pesado",
     "thumbnails": [
       ""
     ]
