@@ -16,6 +16,7 @@
     "express-handlebars": "^7.0.7",
     "mongoose": "^7.3.1",
     "nodemon": "^2.0.22",
-    "socket.io": "^4.7.0"
+    "socket.io": "^4.7.0",
+    "uuid": "^9.0.0"
   }
 }

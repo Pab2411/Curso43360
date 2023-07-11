@@ -1,21 +1,19 @@
 
 import fs from 'fs';
 
-
-
-import fs from 'fs';
+productsFilePath = './dao/archivoHL/productos.json'
 
 export default class Product {
     constructor() {
-        this.productsFilePath='./archivoHL/productos.json'
+        console.log(`Trabando en el archivos ${productsFilePath}`)
     }
 
     // todos los productos y opcion a cantidad
-    
+
     getAll = async () => {
-        if (fs.existsSync(this.productsFilePath)){
+        if (fs.existsSync(productsFilePath)) {
             try {
-                let productsData = await fs.promises.readFile(this.productsFilePath, 'utf-8');
+                let productsData = await fs.promises.readFile(productsFilePath, 'utf-8');
                 return JSON.parse(productsData);
             } catch (error) {
                 console.log("No puede guardar el archivo:" + error);
@@ -30,7 +28,7 @@ export default class Product {
 
     getProductById = async (productId) => {
         try {
-            const productsData = await fs.promises.readFile(this.productsFilePath, 'utf-8');
+            const productsData = await fs.promises.readFile(productsFilePath, 'utf-8');
             const products = JSON.parse(productsData);
             const product = products.find((p) => p.id === productId);
             if (product) {
@@ -53,25 +51,7 @@ export default class Product {
                 return { error: 'Todos los campos son obligatorios' };
             }
 
-            const productsData = await fs.promises.readFile(this.productsFilePath, 'utf-8');
-            const products = JSON.parse(productsData);
-
-            const lastProduct = products[products.length - 1];
-            const productId = lastProduct ? lastProduct.id + 1 : 1;
-
-            const productToAdd = {
-                id: productId,
-                title,
-                description,
-                code,
-                price,
-                stock,
-                category,
-                thumbnails: Array.isArray(thumbnails) ? thumbnails : [thumbnails]
-            };
-
-            products.push(productToAdd);
-            await fs.promises.writeFile(this.productsFilePath, JSON.stringify(products, null, 2));
+            await fs.promises.appendFile(productsFilePath, JSON.stringify(productData) + '\n');
 
             return { status: "success", message: "Producto agregado con exito!!" };
         } catch (error) {
@@ -89,12 +69,12 @@ export default class Product {
                 return { error: 'Necesita ingresar al menos un campo para poder modificar' };
             }
 
-            const productsData = await fs.promises.readFile(this.productsFilePath, 'utf-8');
+            const productsData = await fs.promises.readFile(productsFilePath, 'utf-8');
             let products = JSON.parse(productsData);
             const productIndex = products.findIndex((p) => p.id === productId);
             if (productIndex !== -1) {
                 products[productIndex] = { ...products[productIndex], ...updatedData };
-                await fs.promises.writeFile(this.productsFilePath, JSON.stringify(products, null, 2));
+                await fs.promises.writeFile(productsFilePath, JSON.stringify(products, null, 2));
                 return { status: "success", message: "Producto actualizado con exito!!" };
             } else {
                 return { error: 'Producto no encontrado' };
@@ -109,12 +89,12 @@ export default class Product {
 
     deleteProduct = async (productId) => {
         try {
-            const productsData = await fs.promises.readFile(this.productsFilePath, 'utf-8');
+            const productsData = await fs.promises.readFile(productsFilePath, 'utf-8');
             let products = JSON.parse(productsData);
             const productIndex = products.findIndex((p) => p.id === productId);
             if (productIndex !== -1) {
                 const deletedProduct = products.splice(productIndex, 1)[0];
-                await fs.promises.writeFile(this.productsFilePath, JSON.stringify(products, null, 2));
+                await fs.promises.writeFile(productsFilePath, JSON.stringify(products, null, 2));
                 return { status: "success", message: "Producto borrado", detalle: deletedProduct };
             } else {
                 return { error: 'Producto no encontrado' };
@@ -125,3 +105,4 @@ export default class Product {
         }
     }
 }
+
