@@ -1,11 +1,11 @@
 import { Router } from "express";
-import Product from '../dao/fileManagers/products.js';
+import Product from '../dao/dbManager/products.js';
 import fs from "fs"
 
 
 const router = Router();
 const productsManager = new Product();
-const productsFilePath = './dao/archivoHL/productos.json'
+//const productsFilePath = './dao/archivoHL/productos.json'
 
 // Obtener todos los productos
 
@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     let products = await productsManager.getAll();
     res.send({ status: "success", payload: products })
 })
-
+/*
 // Obtener un producto por ID
 
 router.get('/:id', async (req, res) => {
@@ -21,7 +21,7 @@ router.get('/:id', async (req, res) => {
     let product = await productsManager.getProductById(productId);
     res.send(product);
 });
-
+*/
 // agrego un nuevo producto 
 
 router.post('/', async (req, res) => {
@@ -31,14 +31,7 @@ router.post('/', async (req, res) => {
             return res.status(400).json({ error: 'Todos los campos son obligatorios' })
         }
 
-        const productsData = await fs.promises.readFile(productsFilePath, 'utf-8');
-        const products = JSON.parse(productsData);
-
-        const lastProduct = products[products.length - 1];
-        const productId = lastProduct ? lastProduct.id + 1 : 1;
-
         const productToAdd = {
-            id: productId,
             title,
             description,
             code,
@@ -56,5 +49,32 @@ router.post('/', async (req, res) => {
         res.status(500).json({ error: 'Error al agregar el producto' });
     }
 })
+
+// Obtener un producto por ID
+
+router.get('/:id', async (req, res) => {
+    const productId = req.params.id;
+    const result = await productsManager.getProductById(productId);
+    res.json(result);
+});
+
+
+/*
+// Modifico por Id
+
+router.put('/:id', async (req, res) => {
+    const productId = req.params.id;
+    const updatedData = req.body;
+    const result = await productsManager.updateProduct(productId, updatedData);
+    res.json(result);
+});
+*/
+// Borro con Id
+
+router.delete('/:id', async (req, res) => {
+    const productId = req.params.id;
+    const result = await productsManager.deleteProduct(productId);
+    res.json(result);
+});
 
 export default router;
