@@ -5,7 +5,7 @@ import fs from "fs"
 
 const router = Router();
 const productsManager = new Product();
-//const productsFilePath = './dao/archivoHL/productos.json'
+
 
 // Obtener todos los productos
 
@@ -13,15 +13,15 @@ router.get('/', async (req, res) => {
     let products = await productsManager.getAll();
     res.send({ status: "success", payload: products })
 })
-/*
+
 // Obtener un producto por ID
 
 router.get('/:id', async (req, res) => {
     const productId = req.params.id;
-    let product = await productsManager.getProductById(productId);
-    res.send(product);
+    const result = await productsManager.getProductById(productId);
+    res.json(result);
 });
-*/
+
 // agrego un nuevo producto 
 
 router.post('/', async (req, res) => {
@@ -50,16 +50,10 @@ router.post('/', async (req, res) => {
     }
 })
 
-// Obtener un producto por ID
-
-router.get('/:id', async (req, res) => {
-    const productId = req.params.id;
-    const result = await productsManager.getProductById(productId);
-    res.json(result);
-});
 
 
-/*
+
+
 // Modifico por Id
 
 router.put('/:id', async (req, res) => {
@@ -68,7 +62,7 @@ router.put('/:id', async (req, res) => {
     const result = await productsManager.updateProduct(productId, updatedData);
     res.json(result);
 });
-*/
+
 // Borro con Id
 
 router.delete('/:id', async (req, res) => {

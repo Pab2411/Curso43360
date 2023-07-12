@@ -15,8 +15,9 @@ const router = Router();
 */
 router.get('/products', async (req, res) => {
     let products = await productsManager.getAll();
-    console.log(products)
+   // console.log(products)
     res.render('products', { products })
 })
+
 
 export default router;

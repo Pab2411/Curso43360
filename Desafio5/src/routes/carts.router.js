@@ -1,26 +1,47 @@
 import { Router } from "express";
-import Users from "../dao/dbManager/users.js";
+import Cart from '../dao/dbManager/carts.js';
 
-const userManager = new Users;
 const router = Router();
+const cartManager = new Cart();
 
-router.get('/', async (req, res) => {
-    let users = await userManager.getAll();
-    if (!users) return res.status(500).send({ status: "error", error: "No pudo obtener datos" })
-    res.send({ status: "success", payload: users })
-})
-
+// Crear un nuevo carrito
 router.post('/', async (req, res) => {
-    let { first_name, last_name, email, dni, birthDate, gender } = req.body;
-    let result = await userManager.saveUser({
-        first_name,
-        last_name,
-        email,
-        dni,
-        birthDate,
-        gender
-    })
-    res.send({ status: "success", payload: result })
-})
+  try {
+    const result = await cartManager.createCart();
+    res.json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al crear el carrito' });
+  }
+});
+
+// Obtener productos de un carrito por su ID
+
+router.get('/:cartId', async (req, res) => {
+    try {
+      const cartId = req.params.cartId;
+      const result = await cartManager.getCartById(cartId);
+      res.json(result);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Error al obtener los productos del carrito' });
+    }
+  });
+
+  // agrego un producto al carrito
+  
+  router.post('/:cartId/products/:productId', async (req, res) => {
+    try {
+      const cartId = req.params.cartId;
+      const productId = req.params.productId;
+  
+      const result = await cartManager.addProductToCart(cartId, productId);
+  
+      res.json(result);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Error al agregar el producto al carrito' });
+    }
+  });
 
 export default router;
