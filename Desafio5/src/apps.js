@@ -6,10 +6,17 @@ import productsRouter from './routes/products.router.js'
 import cartsRouter from './routes/carts.router.js'
 import handlebars from 'express-handlebars'
 
-import mongoose from 'mongoose';
+import { Server } from 'socket.io';
+import http from 'http';
 
 const app = express();
 const PORT = 8080;
+
+const server = http.createServer(app);
+
+const io = new Server(server);
+import mongoose from 'mongoose';
+
 
 mongoose.set('strictQuery', false)
 //const connection = mongoose.connect("mongodb+srv://pablosivina:pabloG2411@prueba.hni2pod.mongodb.net/?retryWrites=true&w=majority")
@@ -17,7 +24,8 @@ mongoose.set('strictQuery', false)
 mongoose.connect("mongodb+srv://pablosivina:pabloG2411@prueba.hni2pod.mongodb.net/?retryWrites=true&w=majority")
     .then(() => {
         console.log('Conexión exitosa a la base de datos');
-        const server = app.listen(PORT, () => console.log('Servidor arriba en el puerto', PORT));
+        server.listen(PORT, () => console.log('Servidor arriba en el puerto', PORT));
+
     })
     .catch((error) => {
         console.error('Error de conexión a la base de datos:', error);
@@ -28,7 +36,7 @@ mongoose.connect("mongodb+srv://pablosivina:pabloG2411@prueba.hni2pod.mongodb.ne
 
 
 app.engine('handlebars', handlebars.engine());
-app.set('views',__dirname+'/views')
+app.set('views', __dirname + '/views')
 app.set('view engine', 'handlebars')
 
 app.use(express.json())
@@ -41,24 +49,18 @@ app.use('/api/carts', cartsRouter);
 
 
 
-//const server = app.listen(PORT, () => console.log('server arriba'))
+let messages = [];
 
 
-/*
+io.on('connection', socket => {
+    console.log('nuevo cliente conectado');
 
-export const connectMongoDB = async () => {
-    try {
-        await mongoose.connect(config.mongoDB.URL);
-        console.log("Connected to Mongo Atlas");
-    } catch (error) {
-        console.log("Error en la conexión con Mongo Atlas", error);
-    }
-};
-
-connectMongoDB();
-
-app.use(express.json())
-
-app.use('/api/users', userRouter);
-
-*/
+    socket.on('message', data => {
+        messages.push(data)
+        io.emit('messageLogs', messages)
+        console.log(data)
+    })
+    socket.on('authenticated', data => {
+        socket.broadcast.emit('newUserConnected', data);
+    })
+})

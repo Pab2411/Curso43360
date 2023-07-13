@@ -54,7 +54,7 @@ export default class Products {
 */
             const newProduct = new productsModel({
                 //id: productId,
-                
+
                 title,
                 description,
                 code,
@@ -72,91 +72,73 @@ export default class Products {
         }
     };
 
-    
+
 
     // actualizo producto por id segun campos en body
 
     updateProduct = async (productId, updatedData) => {
         try {
-          const { title, description, code, price, stock, category, thumbnails } = updatedData;
-          if (!title && !description && !code && !price && !stock && !category) {
-            return { error: 'Necesita ingresar al menos un campo para poder modificar' };
-          }
-      
-          const product = await productsModel.findOne({ _id: productId });
-          if (product) {
-            product.title = title || product.title;
-            product.description = description || product.description;
-            product.code = code || product.code;
-            product.price = price || product.price;
-            product.stock = stock || product.stock;
-            product.category = category || product.category;
-            product.thumbnails = thumbnails || product.thumbnails;
-      
-            await product.save();
-      
-            return { status: "success", message: "Producto actualizado con éxito" };
-          } else {
-            return { error: 'Producto no encontrado' };
-          }
-        } catch (error) {
-          console.error(error);
-          return { error: 'Error al actualizar el producto' };
-        }
-      };
-    
-    
-  /*      updateProduct = async (productId, updatedData) => {
-            try {
-                const { title, description, code, price, stock, category, thumbnails } = updatedData;
-                if (!title && !description && !code && !price && !stock && !category) {
-                    return { error: 'Necesita ingresar al menos un campo para poder modificar' };
-                }
-    
-                const product = await productsModel.findOne({ id: productId });
-                if (product) {
-                    const updatedProduct = {
-                        ...product.toObject(),
-                        ...updatedData
-                    };
-                    await productsModel.updateOne({ id: productId }, updatedProduct);
-                    return { status: "success", message: "Producto actualizado con éxito" };
-                } else {
-                    return { error: 'Producto no encontrado' };
-                }
-            } catch (error) {
-                console.error(error);
-                return { error: 'Error al actualizar el producto' };
+            const { title, description, code, price, stock, category, thumbnails } = updatedData;
+            if (!title && !description && !code && !price && !stock && !category) {
+                return { error: 'Necesita ingresar al menos un campo para poder modificar' };
             }
+
+            const product = await productsModel.findOne({ _id: productId });
+            if (product) {
+                product.title = title || product.title;
+                product.description = description || product.description;
+                product.code = code || product.code;
+                product.price = price || product.price;
+                product.stock = stock || product.stock;
+                product.category = category || product.category;
+                product.thumbnails = thumbnails || product.thumbnails;
+
+                await product.save();
+
+                return { status: "success", message: "Producto actualizado con éxito" };
+            } else {
+                return { error: 'Producto no encontrado' };
+            }
+        } catch (error) {
+            console.error(error);
+            return { error: 'Error al actualizar el producto' };
         }
-    */
+    };
+
+
+    /*      updateProduct = async (productId, updatedData) => {
+              try {
+                  const { title, description, code, price, stock, category, thumbnails } = updatedData;
+                  if (!title && !description && !code && !price && !stock && !category) {
+                      return { error: 'Necesita ingresar al menos un campo para poder modificar' };
+                  }
+      
+                  const product = await productsModel.findOne({ id: productId });
+                  if (product) {
+                      const updatedProduct = {
+                          ...product.toObject(),
+                          ...updatedData
+                      };
+                      await productsModel.updateOne({ id: productId }, updatedProduct);
+                      return { status: "success", message: "Producto actualizado con éxito" };
+                  } else {
+                      return { error: 'Producto no encontrado' };
+                  }
+              } catch (error) {
+                  console.error(error);
+                  return { error: 'Error al actualizar el producto' };
+              }
+          }
+      */
     // Borro un producto por ID
 
     deleteProduct = async (_id) => {
         try {
-          const product = await productsModel.findOne({ _id });
-      
-          if (product) {
-            const deletedProduct = await productsModel.deleteOne({ _id });
-      
-            return { status: "success", message: "Producto borrado", detalle: deletedProduct };
-          } else {
-            return { error: 'Producto no encontrado' };
-          }
-        } catch (error) {
-          console.error(error);
-          return { error: 'Error al eliminar el producto' };
-        }
-      };
+            const product = await productsModel.findOne({ _id });
 
-/*
-    deleteProduct = async (productId) => {
-        try {
-            const products = await productsModel.find().lean();
-            const productIndex = products.findIndex((p) => p.id === productId);
-            if (productIndex !== -1) {
-                const deletedProduct = products.splice(productIndex, 1)[0];
-                await productsModel.deleteOne({ id: productId });
+            if (product) {
+                const deletedProduct = await productsModel.deleteOne({ _id });
+
                 return { status: "success", message: "Producto borrado", detalle: deletedProduct };
             } else {
                 return { error: 'Producto no encontrado' };
@@ -165,6 +147,24 @@ export default class Products {
             console.error(error);
             return { error: 'Error al eliminar el producto' };
         }
-    }
-   */ 
+    };
+
+    /*
+        deleteProduct = async (productId) => {
+            try {
+                const products = await productsModel.find().lean();
+                const productIndex = products.findIndex((p) => p.id === productId);
+                if (productIndex !== -1) {
+                    const deletedProduct = products.splice(productIndex, 1)[0];
+                    await productsModel.deleteOne({ id: productId });
+                    return { status: "success", message: "Producto borrado", detalle: deletedProduct };
+                } else {
+                    return { error: 'Producto no encontrado' };
+                }
+            } catch (error) {
+                console.error(error);
+                return { error: 'Error al eliminar el producto' };
+            }
+        }
+       */
 }
