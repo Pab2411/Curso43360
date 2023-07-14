@@ -1,4 +1,5 @@
 import productsModel from '../models/products.js'
+
 //import { v4 as uuidv4 } from 'uuid'
 
 export default class Products {
@@ -64,7 +65,7 @@ export default class Products {
                 thumbnails: Array.isArray(thumbnails) ? thumbnails : [thumbnails]
             });
 
-            const result = await newProduct.save();
+            const result = await productsModel.create(productData);
             return result;
         } catch (error) {
             console.error(error);

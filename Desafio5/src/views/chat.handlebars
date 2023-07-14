@@ -1,9 +1,10 @@
-<div>vamos a trabajar con websockets
-
-    <h2>bienvenido</h2>
-    <input id="chatBox">
-    <p id="messageLogs"></p>
+<div>
+    {{#each messages}}
+    <p>{{this.user}}: {{this.message}}</p>
+    {{/each}}
 </div>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<div id="messages"></div>
+
 <script src="/socket.io/socket.io.js"></script>
 <script src="js/index.js"></script>
